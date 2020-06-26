@@ -7,6 +7,8 @@ class NearEarthObjectsTest < Minitest::Test
 
   def test_it_exists
     neos = NearEarthObjects.new('2019-03-30')
+
+    assert_instance_of NearEarthObjects, neos
   end
 
   def test_it_returns_array_of_neos
@@ -21,7 +23,7 @@ class NearEarthObjectsTest < Minitest::Test
                 :epoch_date_close_approach=>1553930880000, :relative_velocity=>{:kilometers_per_second=>"7.8106160396", :kilometers_per_hour=>"28118.2177426427",
                 :miles_per_hour=>"17471.5670190326"}, :miss_distance=>{:astronomical=>"0.0098105541", :lunar=>"3.8163055449", :kilometers=>"1467637.996879767",
                 :miles=>"911947.9636721046"}, :orbiting_body=>"Earth"}], :is_sentry_object=>false}
-    assert_equal expected, neos.parsed_asteroids_data[0]
+    assert_equal expected, neos.parsed_astroids_data[0]
   end
 
   def test_it_returns_largest_astroid_in_feet
@@ -30,9 +32,24 @@ class NearEarthObjectsTest < Minitest::Test
     assert_equal '10233 feet', neos.largest_astroid_diameter_feet
   end
 
-  # def test_a_date_returns_a_list_of_neos
-  #   results = NearEarthObjects.find_neos_by_date('2019-03-30')
-  #   require "pry"; binding.pry
-  #   assert_equal '(2019 GD4)', results[:astroid_list][0][:name]
-  # end
+  def test_it_returns_total_number_astroids
+    neos = NearEarthObjects.new('2019-03-30')
+
+    assert_equal 12, neos.total_number_of_astroids
+  end
+
+  def test_it_can_format_asteroid_data
+    neos = NearEarthObjects.new('2019-03-30')
+
+    expected = {:name=>"(2019 GD4)", :diameter=>"61 ft", :miss_distance=>"911947 miles"}
+    assert_equal expected, neos.formatted_astroid_data[0]
+  end
+
+  def test_it_can_return_details_of_largest_astriod
+    neos = NearEarthObjects.new('2019-03-30')
+
+    expected = {:name=>"141484 (2002 DB4)", :diameter=>"10233 ft", :miss_distance=>"37046029 miles"}
+    assert_equal expected, neos.biggest_astroid
+  end
+
 end
