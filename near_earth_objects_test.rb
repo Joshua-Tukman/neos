@@ -14,7 +14,7 @@ class NearEarthObjectsTest < Minitest::Test
   def test_it_returns_array_of_neos
     neos = NearEarthObjects.new('2019-03-30')
 
-    expected = {:links=>{:self=>"http://www.neowsapp.com/rest/v1/neo/3840858?api_key=UJ8Mfto55bt0FgwYnJY8JPEdS8e2eFWOFprATVbG"}, :id=>"3840858",
+    expected = {:links=>{:self=>"http://www.neowsapp.com/rest/v1/neo/3840858?api_key=SIuHI3KPiOgTuXFFaneeqZU4cRT1n8wtzYbrgHu3"}, :id=>"3840858",
                 :neo_reference_id=>"3840858", :name=>"(2019 GD4)", :nasa_jpl_url=>"http://ssd.jpl.nasa.gov/sbdb.cgi?sstr=3840858",
                 :absolute_magnitude_h=>27.5, :estimated_diameter=>{:kilometers=>{:estimated_diameter_min=>0.008405334, :estimated_diameter_max=>0.0187948982},
                 :meters=>{:estimated_diameter_min=>8.4053340207, :estimated_diameter_max=>18.7948982439}, :miles=>{:estimated_diameter_min=>0.0052228308,
